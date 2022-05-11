@@ -1,0 +1,13 @@
+
+target 'imgZip4Flutter_Example' do
+  pod 'imgZip4Flutter', :path => '../'
+
+   
+end
+post_install do |installer|
+  installer.pod_target_subprojects.flat_map { |p| p.targets }.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '5.0'
+    end
+  end
+end

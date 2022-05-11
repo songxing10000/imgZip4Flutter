@@ -1,0 +1,6 @@
+module imgZip4Flutter {
+  umbrella header "imgZip4Flutter-umbrella.h"
+
+  export *
+  module * { export * }
+}

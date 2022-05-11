@@ -1,0 +1,26 @@
+PODS:
+  - imgZip4Flutter (0.0.3):
+    - imgZip4Flutter/Source (= 0.0.3)
+    - ZIPFoundation (~> 0.9.12)
+  - imgZip4Flutter/Source (0.0.3):
+    - ZIPFoundation (~> 0.9.12)
+  - ZIPFoundation (0.9.13)
+
+DEPENDENCIES:
+  - imgZip4Flutter (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - ZIPFoundation
+
+EXTERNAL SOURCES:
+  imgZip4Flutter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  imgZip4Flutter: 4955eb32915085f70388b5909a11c294ef827c4e
+  ZIPFoundation: ae5b4b813d216d3bf0a148773267fff14bd51d37
+
+PODFILE CHECKSUM: 4a21be367b185de1c8d88b35e492f27d4e499aa8
+
+COCOAPODS: 1.11.3
