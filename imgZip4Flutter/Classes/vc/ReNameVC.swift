@@ -13,17 +13,17 @@ public class ReNameVC: NSViewController {
         return ReNameVC(nibName: "ReNameVC", bundle: Util.getLibBundle())
     }
     /// 输入框
-    @IBOutlet weak var m_textField: NSSearchField!
+    @IBOutlet private weak var m_textField: NSSearchField!
     private var imgNames = [String]()
     @IBOutlet private weak var m_tableView: NSTableView!
     /// 历史目标文件夹
-    lazy var m_historyDestinationFolderPaths = [String]()
+    private lazy var m_historyDestinationFolderPaths = [String]()
     /// zip包是单张图片还是多张图片，单张图片可选重命名zip内包含3张图片，多张图片不重命名
-    @IBOutlet weak var imgCntSeg: NSSegmentedControl!
-    @IBOutlet weak var m_listBox: NSComboBox!
+    @IBOutlet private weak var imgCntSeg: NSSegmentedControl!
+    @IBOutlet private weak var m_listBox: NSComboBox!
     public override func viewDidLoad() {
         super.viewDidLoad()
-        title = "图片zip重命名"
+        title = "蓝湖图片zip 重命名 for Flutter"
         
         // 回显历史的重命名
         imgNames.append(contentsOf: Util.getStrsFromUserDefaults(key: "zip_img_names"))
