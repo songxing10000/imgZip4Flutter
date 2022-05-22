@@ -1,13 +1,21 @@
 PODS:
   - imgZip4Flutter (0.0.3):
     - imgZip4Flutter/Source (= 0.0.3)
+    - xUtils
+    - xViews
     - ZIPFoundation (~> 0.9.12)
   - imgZip4Flutter/Source (0.0.3):
+    - xUtils
+    - xViews
     - ZIPFoundation (~> 0.9.12)
+  - xUtils (0.1.0)
+  - xViews (0.1.0)
   - ZIPFoundation (0.9.13)
 
 DEPENDENCIES:
   - imgZip4Flutter (from `../`)
+  - xUtils (from `../../xUtils/`)
+  - xViews (from `../../xViews/`)
 
 SPEC REPOS:
   trunk:
@@ -16,11 +24,17 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   imgZip4Flutter:
     :path: "../"
+  xUtils:
+    :path: "../../xUtils/"
+  xViews:
+    :path: "../../xViews/"
 
 SPEC CHECKSUMS:
-  imgZip4Flutter: 4955eb32915085f70388b5909a11c294ef827c4e
+  imgZip4Flutter: 28dca749f3f539fb079ac8d43bc5e4c864a9bed4
+  xUtils: b2310993d9d5298b027989acad4951aeeb2d34ca
+  xViews: 70824eaf5b63c7ac2148f7497d5779c3eefcce92
   ZIPFoundation: ae5b4b813d216d3bf0a148773267fff14bd51d37
 
-PODFILE CHECKSUM: 4a21be367b185de1c8d88b35e492f27d4e499aa8
+PODFILE CHECKSUM: 8813cae90c49450268d29119e4b06c66c4e8e545
 
 COCOAPODS: 1.11.3

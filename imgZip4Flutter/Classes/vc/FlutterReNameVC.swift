@@ -7,10 +7,25 @@
 
 import Cocoa
 import ZIPFoundation
-
-public class ReNameVC: NSViewController {
-    public static func vc() -> ReNameVC {
-        return ReNameVC(nibName: "ReNameVC", bundle: Util.getLibBundle())
+import xUtils
+import xViews
+private func getLibBundle() -> Bundle? {
+    let fb = Bundle(for: FlutterReNameVC.self)
+    guard let path = fb.path(forResource: "imgZip4Flutter", ofType: "bundle") else {
+        return nil
+    }
+    return Bundle(path: path)
+    
+}
+private func getImg(_ imgName: String?) -> NSImage? {
+    guard let imgName = imgName else {
+        return nil
+    }
+    return getLibBundle()?.image(forResource: imgName)
+}
+public class FlutterReNameVC: NSViewController {
+    public static func vc() -> FlutterReNameVC {
+        return FlutterReNameVC(nibName: "FlutterReNameVC", bundle: getLibBundle())
     }
     /// 输入框
     @IBOutlet private weak var m_textField: NSSearchField!
@@ -26,7 +41,7 @@ public class ReNameVC: NSViewController {
         title = "蓝湖图片zip 重命名 for Flutter"
         
         // 回显历史的重命名
-        imgNames.append(contentsOf: Util.getStrsFromUserDefaults(key: "zip_img_names"))
+        imgNames.append(contentsOf: xUtils.getStrsFromUserDefaults(key: "zip_img_names"))
         m_tableView.reloadData()
         
         // 给table的cell添加右键菜单
@@ -37,7 +52,7 @@ public class ReNameVC: NSViewController {
         // 下拉框
         m_listBox.dataSource = self
         m_listBox.delegate  = self
-        m_historyDestinationFolderPaths.append(contentsOf: Util.getStrsFromUserDefaults(key: "spFolderPath"))
+        m_historyDestinationFolderPaths.append(contentsOf: xUtils.getStrsFromUserDefaults(key: "spFolderPath"))
         m_listBox.reloadData()
         if !m_historyDestinationFolderPaths.isEmpty {
             m_listBox.selectItem(at: 0)
@@ -50,11 +65,11 @@ public class ReNameVC: NSViewController {
     
     func unZipAtURL(_ zipFileURL: URL){
         guard !m_listBox.stringValue.isEmpty else {
-            Util.showAlter(msg: "得先指定flutter的图片文件夹")
+            xUtils.showAlter(msg: "得先指定flutter的图片文件夹")
             return
         }
-        let has2x = Util.isFolderExists("\(m_listBox.stringValue)/2.0x")
-        let has3x = Util.isFolderExists("\(m_listBox.stringValue)/3.0x")
+        let has2x = xUtils.isFolderExists("\(m_listBox.stringValue)/2.0x")
+        let has3x = xUtils.isFolderExists("\(m_listBox.stringValue)/3.0x")
         
         if has2x && has3x {
             zipToDefaultFolder(zipFileURL)
@@ -68,8 +83,8 @@ public class ReNameVC: NSViewController {
         
         let unzipTempFolderPath =  zipFileURL.pathComponents.dropLast().joined(separator: "/").dropFirst().appending("/unzipDataTemp")
         let unzipTempFolderURL = URL(fileURLWithPath: unzipTempFolderPath)
-        Util.removeFolderAtPath(unzipTempFolderPath)
-        Util.createFolder(unzipTempFolderPath)
+        xUtils.removeFolderAtPath(unzipTempFolderPath)
+        xUtils.createFolder(unzipTempFolderPath)
         let isSingImgZip = imgCntSeg.selectedSegment == 1
         let imgNewName = m_textField.stringValue
         do {
@@ -102,7 +117,7 @@ public class ReNameVC: NSViewController {
                     
                     if let oldFiles = try? fm.contentsOfDirectory(atPath: destFolderURL.path), !oldFiles.isEmpty {
                         if oldFiles.contains(destFileName) {
-                            Util.showAlter(msg: "\(folder23)文件夹，已存在图片\(destFileName)")
+                            xUtils.showAlter(msg: "\(folder23)文件夹，已存在图片\(destFileName)")
                             continue
                         } else {
                             // 被移动到目标的文件位置
@@ -127,7 +142,7 @@ public class ReNameVC: NSViewController {
     }
     private func saveImgName(_ imgNewName: String) {
         if !imgNewName.isEmpty {
-            let newNames = Util.saveStrToStrArr(key: "zip_img_names" , saveStr: imgNewName )
+            let newNames = xUtils.saveStrToStrArr(key: "zip_img_names" , saveStr: imgNewName )
             if !newNames.isEmpty {
                 imgNames.removeAll()
                 imgNames.append(contentsOf: newNames)
@@ -156,14 +171,14 @@ public class ReNameVC: NSViewController {
     // 选择flutter放图片的文件夹
     @IBAction func chooseFolder(_ sender: NSButton) {
         
-        Util.chooseFolder(for: view.window) { folderPath in
+        xUtils.chooseFolder(for: view.window) { folderPath in
             
-            let has2x = Util.isFolderExists("\(folderPath)/2.0x")
-            let has3x = Util.isFolderExists("\(folderPath)/3.0x")
+            let has2x = xUtils.isFolderExists("\(folderPath)/2.0x")
+            let has3x = xUtils.isFolderExists("\(folderPath)/3.0x")
             
             if has2x && has3x {
                 
-                let folderPaths = Util.saveStrToStrArr(key: "spFolderPath", saveStr: folderPath)
+                let folderPaths = xUtils.saveStrToStrArr(key: "spFolderPath", saveStr: folderPath)
                 self.m_historyDestinationFolderPaths.removeAll()
                 self.m_historyDestinationFolderPaths.append(contentsOf: folderPaths)
                 self.m_listBox.reloadData()
@@ -172,7 +187,7 @@ public class ReNameVC: NSViewController {
                 }
                
             } else {
-                Util.showAlter(msg: "文件夹下，应该有2.0x和3.0x文件夹")
+                xUtils.showAlter(msg: "文件夹下，应该有2.0x和3.0x文件夹")
             }
         }
     }
@@ -184,8 +199,8 @@ public class ReNameVC: NSViewController {
         m_listBox.reloadData()
     }
 }
-extension ReNameVC: FileDragDelegate {
-    func didFinishDrag(_ URLs: [URL]) {
+extension FlutterReNameVC: FileDragDelegate {
+   public func didFinishDrag(_ URLs: [URL]) {
         
         let fileURL = URLs[0]
         let ext = fileURL.pathExtension
@@ -198,13 +213,13 @@ extension ReNameVC: FileDragDelegate {
     }
 }
 // MARK: - NSTableViewDataSource
-extension ReNameVC: NSTableViewDataSource {
+extension FlutterReNameVC: NSTableViewDataSource {
     public func numberOfRows(in tableView: NSTableView) -> Int {
         return imgNames.count
     }
 }
 // MARK: - NSTableViewDelegate
-extension ReNameVC: NSTableViewDelegate {
+extension FlutterReNameVC: NSTableViewDelegate {
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let imgName = imgNames[row]
@@ -216,7 +231,7 @@ extension ReNameVC: NSTableViewDelegate {
     }
 }
 // MARK: - NSMenuDelegate
-extension ReNameVC: NSMenuDelegate {
+extension FlutterReNameVC: NSMenuDelegate {
     public func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
         // 在这里动态添加 menu item
@@ -239,7 +254,7 @@ extension ReNameVC: NSMenuDelegate {
         
     }
 }
-extension ReNameVC: NSComboBoxDataSource {
+extension FlutterReNameVC: NSComboBoxDataSource {
     public func comboBox(_ aComboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
         guard index < m_historyDestinationFolderPaths.count else {
             return nil
@@ -251,7 +266,7 @@ extension ReNameVC: NSComboBoxDataSource {
         return m_historyDestinationFolderPaths.count
     }
 }
-extension ReNameVC: NSComboBoxDelegate {
+extension FlutterReNameVC: NSComboBoxDelegate {
     public func comboBoxSelectionDidChange(_ notification: Notification) {
         if let comboBox = notification.object as? NSComboBox, comboBox === m_listBox {
             guard comboBox.indexOfSelectedItem < m_historyDestinationFolderPaths.count else { return }

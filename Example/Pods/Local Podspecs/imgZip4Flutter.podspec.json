@@ -18,10 +18,18 @@
   "platforms": {
     "osx": "10.15"
   },
-  "swift_versions": "5.0",
+  "swift_versions": [
+    "5.0"
+  ],
   "dependencies": {
     "ZIPFoundation": [
       "~> 0.9.12"
+    ],
+    "xUtils": [
+
+    ],
+    "xViews": [
+
     ]
   },
   "subspecs": [

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CA5F59203D44A7EC72705733F528DE4D"
-               BuildableName = "libPods-imgZip4Flutter_Example.a"
+               BuildableName = "Pods_imgZip4Flutter_Example.framework"
                BlueprintName = "Pods-imgZip4Flutter_Example"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -30,7 +30,8 @@ TODO: Add long description of the pod here.
 
   s.platform = :osx
   s.osx.deployment_target = "10.15"
-  
+  s.swift_versions = ['5.0']
+
   s.subspec 'Source' do |ss|
   ss.source_files = 'imgZip4Flutter/Classes/**/*.{h,m,swift}'
   ss.xcconfig = { "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) PODSPEC_NAME=#{s.name} PODSPEC_VERSION=#{s.version}" }
@@ -40,7 +41,7 @@ TODO: Add long description of the pod here.
   
 
   end
-  s.swift_version = "5.0"
+   
   s.dependency 'ZIPFoundation', '~> 0.9.12'
 
 #  s.subspec 'Framework' do |ss|
@@ -50,6 +51,7 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'Cocoa'
   # s.dependency 'AFNetworking', '~> 2.3'
-
+  s.dependency 'xUtils'
+  s.dependency 'xViews'
 end
 

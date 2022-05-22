@@ -1,7 +1,13 @@
+use_frameworks!
 
+platform :osx, '10.15'
+
+install! 'cocoapods',
+:warn_for_unused_master_specs_repo => false
 target 'imgZip4Flutter_Example' do
   pod 'imgZip4Flutter', :path => '../'
-
+  pod 'xViews', :path => '../../xViews/'
+  pod 'xUtils', :path => '../../xUtils/'
    
 end
 post_install do |installer|
