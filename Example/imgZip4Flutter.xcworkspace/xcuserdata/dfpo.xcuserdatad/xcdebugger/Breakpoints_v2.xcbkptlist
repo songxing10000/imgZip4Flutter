@@ -3,4 +3,118 @@
    uuid = "41C65D2F-3315-45C1-BBF8-86934E22F15E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "521FB31E-884A-4CC0-B380-0E595E42E570"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "zipToDefaultFolder(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6469CC7-0099-451C-8B32-266212AF77EB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "zipToDefaultFolder(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D6469CC7-0099-451C-8B32-266212AF77EB - 9026c7cb31e76b37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imgZip4Flutter.FlutterReNameVC.zipToDefaultFolder(Foundation.URL) -&gt; ()"
+                  moduleName = "imgZip4Flutter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dfpo/Desktop/imgZip4Flutter/imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "3224">
+               </Location>
+               <Location
+                  uuid = "D6469CC7-0099-451C-8B32-266212AF77EB - 9026c7cb31e76b37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imgZip4Flutter.FlutterReNameVC.zipToDefaultFolder(Foundation.URL) -&gt; ()"
+                  moduleName = "imgZip4Flutter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dfpo/Desktop/imgZip4Flutter/imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "3210">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D43C472-A9CE-4023-9C08-229C2C288DF9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "zipToDefaultFolder(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6D43C472-A9CE-4023-9C08-229C2C288DF9 - 9026c7cb31e764e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imgZip4Flutter.FlutterReNameVC.zipToDefaultFolder(Foundation.URL) -&gt; ()"
+                  moduleName = "imgZip4Flutter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dfpo/Desktop/imgZip4Flutter/imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "7347">
+               </Location>
+               <Location
+                  uuid = "6D43C472-A9CE-4023-9C08-229C2C288DF9 - 9026c7cb31e76483"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imgZip4Flutter.FlutterReNameVC.zipToDefaultFolder(Foundation.URL) -&gt; ()"
+                  moduleName = "imgZip4Flutter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dfpo/Desktop/imgZip4Flutter/imgZip4Flutter/Classes/vc/FlutterReNameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "7278">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

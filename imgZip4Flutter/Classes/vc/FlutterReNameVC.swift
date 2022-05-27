@@ -24,6 +24,8 @@ private func getImg(_ imgName: String?) -> NSImage? {
     return getLibBundle()?.image(forResource: imgName)
 }
 public class FlutterReNameVC: NSViewController {
+    @IBOutlet var m_textView: NSTextView!
+
     public static func vc() -> FlutterReNameVC {
         return FlutterReNameVC(nibName: "FlutterReNameVC", bundle: getLibBundle())
     }
@@ -117,7 +119,8 @@ public class FlutterReNameVC: NSViewController {
                     
                     if let oldFiles = try? fm.contentsOfDirectory(atPath: destFolderURL.path), !oldFiles.isEmpty {
                         if oldFiles.contains(destFileName) {
-                            xUtils.showAlter(msg: "\(folder23)文件夹，已存在图片\(destFileName)")
+                            output("\(folder23)文件夹，已存在图片\(destFileName)")
+
                             continue
                         } else {
                             // 被移动到目标的文件位置
@@ -125,19 +128,22 @@ public class FlutterReNameVC: NSViewController {
                             do {
                                 try fm.moveItem(at: currentFileURL, to: destFileURL)
                             } catch {
-                                print("操作遇到了错误：\(error.localizedDescription)")
+                                output(error.localizedDescription)
                             }
                         }
                     }
                 }
                 saveImgName(imgNewName)
+            } else {
+                output("zip包内的图片数量大于3,需要切换到多张选项")
+return
             }
             
             
             // 删除zip文件
             delZip(zipFileURL, isNeedDelZip: false)
         } catch {
-            print("操作遇到了错误：\(error)")
+            output(error.localizedDescription)
         }
     }
     private func saveImgName(_ imgNewName: String) {
@@ -155,7 +161,7 @@ public class FlutterReNameVC: NSViewController {
             do {
                 try FileManager.default.removeItem(atPath: zipFileURL.path)
             } catch {
-                print("操作遇到了错误：\(error)")
+                output(error.localizedDescription)
             }
         }
     }
@@ -198,6 +204,14 @@ public class FlutterReNameVC: NSViewController {
         m_historyDestinationFolderPaths.removeAll()
         m_listBox.reloadData()
     }
+    private func output(_ str: String?) {
+        guard let str = str, !str.isEmpty else {
+            return
+        }
+        m_textView.string = m_textView.string.appending("\n").appending(str)
+        let range = NSRange(location:m_textView.string.count,length:0)
+        m_textView.scrollRangeToVisible(range)
+    }
 }
 extension FlutterReNameVC: FileDragDelegate {
    public func didFinishDrag(_ URLs: [URL]) {
@@ -206,6 +220,7 @@ extension FlutterReNameVC: FileDragDelegate {
         let ext = fileURL.pathExtension
         switch ext {
         case "zip":
+            output(fileURL.absoluteString)
             unZipAtURL(fileURL)
         default:
             print(ext)
@@ -272,5 +287,13 @@ extension FlutterReNameVC: NSComboBoxDelegate {
             guard comboBox.indexOfSelectedItem < m_historyDestinationFolderPaths.count else { return }
             
         }
+    }
+}
+extension FlutterReNameVC: NSSplitViewDelegate {
+    public func splitView(_ splitView: NSSplitView, constrainMinCoordinate proposedMinimumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+        return proposedMinimumPosition+90
+    }
+    public func splitView(_ splitView: NSSplitView, constrainMaxCoordinate proposedMaximumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+        return proposedMaximumPosition-90
     }
 }
